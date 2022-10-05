@@ -15,6 +15,24 @@ class UBot(commands.Bot):
     
     async def get_context(self, message, *, cls=UContext):
         return await super().get_context(message, cls=UContext)
+
+    def load_extentions(self):
+        for file in os.listdir("cogs"):
+            if file.endswith(".py"):
+                try:
+                    self.load_extension(f"cogs.{file[:-3]}")
+                except Exception as e:
+                    print(f"Error loading {file}: {e}")
+    
+    def reload_extensions(self):
+        for file in os.listdir("cogs"):
+            if file.endswith(".py"):
+                try:
+                    self.reload_extension(f"cogs.{file[:-3]}")
+                except discord.ExtensionNotLoaded:
+                    self.load_extension(f"cogs.{file[:-3]}")
+                except Exception as e:
+                    print(f"Error reloading {file}: {e}")
     
     async def on_ready(self):
         print("Ready!")
@@ -30,5 +48,7 @@ bot = UBot(
     case_insensitive=True,
     help_command=None
 )
+
+bot.load_extensions("cogs")
 
 bot.run(os.environ['TOKEN'])
