@@ -35,7 +35,7 @@ class Utilities(commands.Cog):
         await ctx.send(f"Cleared `{amount}` messages.", delete_after=5)
 
     @commands.command()
-    @commands.has_permissions(manage_channel=True)
+    @commands.has_permissions(manage_channels=True)
     async def slowmode(self, ctx, seconds: int = 0):
         await ctx.channel.edit(slowmode_delay=seconds)
         await ctx.send(f"Set slowmode delay to `{seconds}` seconds.")

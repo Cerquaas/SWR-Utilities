@@ -16,3 +16,6 @@ class Reload(commands.Cog):
         time = (end - start).total_seconds() * 1000
 
         await ctx.r(f"Reloaded extensions in `{time}`ms.")
+
+def setup(bot):
+    bot.add_cog(Reload(bot))
