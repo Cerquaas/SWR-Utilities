@@ -20,13 +20,7 @@ class Help(commands.Cog):
             "`-lock <channel>` - Locks a channel.",
             "`-unlock <channel>` - Unlocks a channel.",
             "`-masslock` - Locks all channels in the server.",
-            "`-massunlock` - Unlocks all channels in the server.",
-            "`-kick <member> <reason>` - Kicks a member.",
-            "`-ban <member> <reason>` - Bans a member.",
-            "`-unban <member> <reason>` - Unbans a member.",
-            "`-warn <member> <reason>` - Warns a member.",
-            "`-warnings <member>` - Shows a member's warnings.",
-            "`-clearwarnings <member>` - Clears a member's warnings."
+            "`-massunlock` - Unlocks all channels in the server."
         ]
 
         await ctx.r(ctx.m(h))
