@@ -8,8 +8,7 @@ class Help(commands.Cog):
     @commands.command()
     async def help(self, ctx):
         h = [
-            "__**Help**__",
-            "",
+            "__**Commands**__",
             "`-help` - Shows this message.",
             "`-reload` - Reloads all extensions.",
             "`-ping` - Shows the bot's latency.",
