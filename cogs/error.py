@@ -24,6 +24,8 @@ class Errors(commands.Cog):
             await ctx.r("This command is disabled.")
         elif isinstance(error, commands.NotOwner):
             await ctx.r("You are not the owner of this bot.")
+        elif isinstance(error, commands.NoPrivateMessage):
+            await ctx.r("Whoops! I do not accept DMs. Please DM an SHR or above if you need help!")
         else:
             await ctx.r("An unknown error has occured. This has been reported.")
             raise error

@@ -23,6 +23,21 @@ class Utilities(commands.Cog):
         await ctx.send(message)
     
     @commands.command()
+    @commands.has_permissions(manage_messages=True)
+    async def send(self, ctx, channel: discord.TextChannel, *, message):
+        await ctx.message.delete()
+        await channel.send(message)
+    
+    @commands.command()
+    @commands.has_permissions(manage_messages=True)
+    async def dm(self, ctx, user: discord.Member, *, message):
+        try:
+            await user.send(message)
+            await ctx.r(f"DM setnt to `{user.name}#{user.discriminator}`.")
+        except:
+            await ctx.r(f"Failed to send DM to `{user.name}#{user.discriminator}`.")
+    
+    @commands.command()
     async def ping(self, ctx):
         await ctx.r(f"Pong! `{round(self.bot.latency * 1000)}ms`")
     
