@@ -9,7 +9,7 @@ class UContext(commands.Context):
     async def e(self, embed):
         await self.send(embed=embed)
     
-    async def m(self, lines):
+    def m(self, lines):
         return "\n".join(lines)
     
 class UBot(commands.Bot):
