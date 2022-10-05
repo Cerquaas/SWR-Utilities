@@ -48,13 +48,13 @@ class Utilities(commands.Cog):
     async def clear(self, ctx, amount: int = 5):
         await ctx.message.delete()
         await ctx.channel.purge(limit=amount)
-        await ctx.send(f"Cleared `{amount}` messages.", delete_after=5)
+        await ctx.r(f"Cleared `{amount}` messages.", delete_after=5)
 
     @commands.command()
     @commands.has_permissions(manage_channels=True)
     async def slowmode(self, ctx, seconds: int = 0):
         await ctx.channel.edit(slowmode_delay=seconds)
-        await ctx.send(f"Set slowmode delay to `{seconds}` seconds.")
+        await ctx.r(f"Set slowmode delay to `{seconds}` seconds.")
     
     @commands.command()
     @commands.has_permissions(manage_channels=True)
@@ -63,7 +63,7 @@ class Utilities(commands.Cog):
             channel = ctx.channel
         
         await channel.set_permissions(ctx.guild.default_role, send_messages=False)
-        await ctx.send(f"Locked `{channel.name}`.")
+        await ctx.r(f"Locked `{channel.name}`.")
     
     @commands.command()
     @commands.has_permissions(manage_channels=True)
@@ -72,25 +72,27 @@ class Utilities(commands.Cog):
             channel = ctx.channel
         
         await channel.set_permissions(ctx.guild.default_role, send_messages=True)
-        await ctx.send(f"Unlocked `{channel.name}`.")
+        await ctx.r(f"Unlocked `{channel.name}`.")
     
     @commands.command()
     @commands.has_permissions(manage_channels=True)
     async def masslock(self, ctx):
+        message = await ctx.send("Locking all channels...")
         for category in masslock_categories:
             for channel in ctx.guild.get_channel(category).channels:
                 await channel.set_permissions(ctx.guild.default_role, send_messages=False)
         
-        await ctx.send("Masslocked all MR and below channels.")
+        await message.edit("Locked all channels.")
 
     @commands.command()
     @commands.has_permissions(manage_channels=True)
     async def massunlock(self, ctx):
+        message = await ctx.send("Unlocking all channels...")
         for category in masslock_categories:
             for channel in ctx.guild.get_channel(category).channels:
                 await channel.set_permissions(ctx.guild.default_role, send_messages=True)
         
-        await ctx.send("Unmassunlocked all MR and below channels.")
+        await message.edit("Unlocked all channels.")
     
     @commands.command()
     @commands.has_permissions(kick_members=True)
