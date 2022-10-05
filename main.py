@@ -1,3 +1,4 @@
+import os
 import discord
 from discord.ext import commands
 
@@ -30,4 +31,4 @@ bot = UBot(
     help_command=None
 )
 
-bot.run()
+bot.run(os.environ['TOKEN'])
