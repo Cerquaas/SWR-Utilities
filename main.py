@@ -16,7 +16,7 @@ class UBot(commands.Bot):
     async def get_context(self, message, *, cls=UContext):
         return await super().get_context(message, cls=UContext)
 
-    def load_extentions(self):
+    def load_extensions(self):
         for file in os.listdir("cogs"):
             if file.endswith(".py"):
                 try:
@@ -49,6 +49,5 @@ bot = UBot(
     help_command=None
 )
 
-bot.load_extensions("cogs")
-
+bot.load_extensions()
 bot.run(os.environ['TOKEN'])
