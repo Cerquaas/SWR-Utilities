@@ -13,6 +13,8 @@ class Help(commands.Cog):
             "`-help` - Shows this message.",
             "`-reload` - Reloads all extensions.",
             "`-ping` - Shows the bot's latency.",
+            "",
+            "__**Staff**__",
             "`-say <message>` - Makes the bot say something.",
             "`-clear <amount>` - Clears a specified amount of messages.",
             "`-slowmode <seconds>` - Sets the slowmode delay of the current channel.",
